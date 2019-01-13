@@ -110,7 +110,7 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE students.grade = ?
     SQL
-    DB[:conn].execute(sql, x)
+    self.new_from_db(DB[:conn].execute(sql)[0])
   end
 
 

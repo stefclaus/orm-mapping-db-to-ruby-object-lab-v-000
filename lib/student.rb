@@ -100,13 +100,10 @@ class Student
       SELECT *
       FROM students
       WHERE grade = 10
-      ORDER BY id
       LIMIT 1
     SQL
 
-    DB[:conn].execute(sql).map do |student|
-      self.new_from_db(student)
-    end
+    DB[:conn].execute(sql)[0]
   end
 
   def self.all_students_in_grade_X(x)
